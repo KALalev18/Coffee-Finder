@@ -32,7 +32,7 @@ export function Hero({ status, error, onUseLocation, onSearch }: HeroProps) {
           close to home.
         </h1>
         <p className="hero__subtitle">
-          Experience artisanal coffee without the travel. Locate your nearest café instantly.
+          Great coffee without the travel. Locate your nearest café instantly.
         </p>
 
         <div className="finder-card">
