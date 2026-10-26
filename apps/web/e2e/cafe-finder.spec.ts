@@ -23,10 +23,13 @@ test('search → swipe → save → map, in demo mode', async ({ page, isMobile 
   if (isMobile) {
     await page.getByRole('button', { name: 'Save', exact: true }).click();
   } else {
+    // Grab the card by its padding: drags deliberately don't start on links or buttons,
+    // and where those sit depends on font rendering.
     const box = (await first.boundingBox())!;
-    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    const [x, y] = [box.x + 12, box.y + 12];
+    await page.mouse.move(x, y);
     await page.mouse.down();
-    await page.mouse.move(box.x + box.width / 2 + 220, box.y + box.height / 2, { steps: 10 });
+    await page.mouse.move(x + 220, y, { steps: 10 });
     await page.mouse.up();
   }
   await expect(page.getByRole('article', { name: 'Night Owl Espresso' })).toBeVisible();
