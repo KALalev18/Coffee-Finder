@@ -1,46 +1,35 @@
 {
   "name": "coffee-finder",
-  "private": true,
   "version": "1.0.0",
-  "description": "Velvet Brew: find real coffee shops near you, on a map, with directions and personal reviews.",
+  "private": true,
+  "description": "Swipe through cafés near you, save the ones you like, and see them on a map.",
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
+    "dev": "npm run dev -w @coffee-finder/web --",
+    "dev:api": "npm run dev -w @coffee-finder/api --",
+    "build": "npm run build -w @coffee-finder/web -w @coffee-finder/api",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc -b",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspaces",
+    "test:e2e": "npm run test:e2e -w @coffee-finder/web",
     "check": "npm run lint && npm run format:check && npm run typecheck && npm test"
-  },
-  "dependencies": {
-    "leaflet": "1.9.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-leaflet": "4.2.1"
   },
   "devDependencies": {
     "@eslint/js": "9.39.5",
-    "@testing-library/jest-dom": "6.6.3",
-    "@testing-library/react": "16.1.0",
-    "@testing-library/user-event": "14.5.2",
-    "@types/leaflet": "1.9.15",
     "@types/node": "22.19.3",
-    "@types/react": "18.3.18",
-    "@types/react-dom": "18.3.5",
-    "@vitejs/plugin-react": "6.1.2",
     "eslint": "9.39.5",
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-react-refresh": "0.4.16",
     "globals": "15.14.0",
-    "jsdom": "25.0.1",
     "prettier": "3.4.2",
     "typescript": "5.7.2",
     "typescript-eslint": "8.72.0",
-    "vite": "8.3.5",
     "vitest": "5.0.5"
   },
   "engines": {

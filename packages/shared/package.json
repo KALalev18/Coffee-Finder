@@ -1,0 +1,14 @@
+{
+  "name": "@coffee-finder/shared",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Types and OpenStreetMap data logic shared by the web app and the API.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

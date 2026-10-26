@@ -7,10 +7,15 @@ dist-ssr/
 coverage/
 *.tsbuildinfo
 
-# Environment
+# Environment (secrets never belong in a front-end repo; only the example is tracked)
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local tool settings
+.claude/
 
 # Logs
 *.log
@@ -22,3 +27,7 @@ npm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
+
+# Test output
+test-results/
+playwright-report/
