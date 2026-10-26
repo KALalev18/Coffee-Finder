@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Results } from './components/Results';
 import { SavedPanel } from './components/SavedPanel';
 import { useCafeSearch } from './hooks/useCafeSearch';
+import { useReducedMotion } from './hooks/useReducedMotion';
 import { useReviews } from './hooks/useReviews';
 import { useSaved } from './hooks/useSaved';
 import { config } from './lib/config';
@@ -23,11 +24,13 @@ export default function App({ source = defaultSource, demo = config.demo }: AppP
   const { saved, savedIds, save, unsave } = useSaved();
   const [radiusM, setRadiusM] = useState(config.defaultRadiusM);
   const resultsRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
   const { status, origin } = search;
 
   useEffect(() => {
-    if (status === 'done') resultsRef.current?.scrollIntoView?.({ behavior: 'smooth' });
-  }, [status, search.searchId]);
+    if (status !== 'done') return;
+    resultsRef.current?.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth' });
+  }, [status, search.searchId, reducedMotion]);
 
   return (
     <>

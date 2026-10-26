@@ -23,8 +23,9 @@ test('search → swipe → save → map, in demo mode', async ({ page, isMobile 
   if (isMobile) {
     await page.getByRole('button', { name: 'Save', exact: true }).click();
   } else {
-    // Grab the card by its padding: drags deliberately don't start on links or buttons,
-    // and where those sit depends on font rendering.
+    // The page smooth-scrolls to the results, so hover first: Playwright waits until the
+    // card stops moving. Grab it by its padding, since drags don't start on links.
+    await first.hover({ position: { x: 12, y: 12 } });
     const box = (await first.boundingBox())!;
     const [x, y] = [box.x + 12, box.y + 12];
     await page.mouse.move(x, y);
