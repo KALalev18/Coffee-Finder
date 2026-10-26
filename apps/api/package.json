@@ -1,0 +1,26 @@
+{
+  "name": "@coffee-finder/api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Caching, rate-limited proxy in front of the OpenStreetMap Overpass and Nominatim APIs.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "esbuild src/server.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/server.js --external:fastify --external:@fastify/* --external:zod",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "bench": "tsx scripts/bench.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "11.3.0",
+    "@fastify/rate-limit": "11.2.0",
+    "fastify": "5.12.7",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@coffee-finder/shared": "1.0.0",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.14"
+  }
+}
