@@ -25,12 +25,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      - run: npm run build
+      - run: npm run build -w @coffee-finder/web
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+          # Set the API_URL repository variable once the API is deployed. Without it,
+          # the site calls OpenStreetMap directly from the browser.
+          VITE_API_URL: ${{ vars.API_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: apps/web/dist
 
   deploy:
     needs: build

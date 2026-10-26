@@ -1,0 +1,17 @@
+# Render Blueprint for the API (https://render.com/docs/blueprint-spec).
+# The front end is deployed separately to GitHub Pages by .github/workflows/deploy.yml.
+services:
+  - type: web
+    name: coffee-finder-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./apps/api/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: TRUST_PROXY
+        value: true
+      - key: CORS_ORIGINS
+        value: https://kalalev18.github.io
