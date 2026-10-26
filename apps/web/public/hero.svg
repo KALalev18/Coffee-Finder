@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="plank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a3424"/>
+      <stop offset="0.5" stop-color="#3d2b1e"/>
+      <stop offset="1" stop-color="#2e2016"/>
+    </linearGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a6240"/>
+      <stop offset="1" stop-color="#6b4a2f"/>
+    </linearGradient>
+    <radialGradient id="crema" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c79a6b"/>
+      <stop offset="0.75" stop-color="#9c6a3f"/>
+      <stop offset="1" stop-color="#5c3a1f"/>
+    </radialGradient>
+    <radialGradient id="espresso" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7a4a26"/>
+      <stop offset="1" stop-color="#2a170b"/>
+    </radialGradient>
+    <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3b2416"/>
+      <stop offset="0.7" stop-color="#2c1a10"/>
+      <stop offset="1" stop-color="#2c1a10" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.35" numOctaves="3" seed="4"/>
+      <feColorMatrix values="0 0 0 0 0.1  0 0 0 0 0.06  0 0 0 0 0.03  0 0 0 0.5 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="speckle">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="9"/>
+      <feColorMatrix values="0 0 0 0 0.12  0 0 0 0 0.07  0 0 0 0 0.03  0 0 0 0.9 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <g id="bean">
+      <ellipse rx="22" ry="15" fill="#4a2a14"/>
+      <ellipse rx="22" ry="15" fill="#6b3d1c" opacity="0.6" transform="translate(-3 -3) scale(0.8)"/>
+      <path d="M-18 2 C-6 -6 6 8 18 -2" stroke="#25140a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- Wooden table: five planks with grain -->
+  <g>
+    <rect y="0" width="1600" height="200" fill="url(#plank)"/>
+    <rect y="200" width="1600" height="200" fill="url(#plank)"/>
+    <rect y="400" width="1600" height="200" fill="url(#plank)"/>
+    <rect y="600" width="1600" height="200" fill="url(#plank)"/>
+    <rect y="800" width="1600" height="200" fill="url(#plank)"/>
+    <rect width="1600" height="1000" fill="#fff" filter="url(#grain)"/>
+    <g fill="#140c07">
+      <rect y="197" width="1600" height="6"/>
+      <rect y="397" width="1600" height="6"/>
+      <rect y="597" width="1600" height="6"/>
+      <rect y="797" width="1600" height="6"/>
+    </g>
+  </g>
+
+  <!-- Serving board -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="300" width="1360" height="420" rx="26" fill="url(#board)" transform="rotate(-4 800 510)"/>
+  </g>
+  <rect x="120" y="300" width="1360" height="420" rx="26" fill="#fff" filter="url(#grain)" opacity="0.6" transform="rotate(-4 800 510)"/>
+
+  <!-- Pile of ground coffee -->
+  <circle cx="300" cy="420" r="130" fill="url(#ground)"/>
+  <circle cx="300" cy="420" r="115" fill="#fff" filter="url(#speckle)" opacity="0.8"/>
+
+  <!-- Scattered beans -->
+  <use href="#bean" x="190" y="620" transform="rotate(20 190 620)"/>
+  <use href="#bean" x="240" y="660" transform="rotate(-35 240 660)"/>
+  <use href="#bean" x="160" y="690" transform="rotate(70 160 690)"/>
+  <use href="#bean" x="290" y="610" transform="rotate(5 290 610)"/>
+  <use href="#bean" x="215" y="730" transform="rotate(-10 215 730)"/>
+  <use href="#bean" x="280" y="720" transform="rotate(45 280 720)"/>
+  <use href="#bean" x="140" y="610" transform="rotate(-60 140 610)"/>
+  <use href="#bean" x="330" y="670" transform="rotate(-25 330 670)"/>
+  <use href="#bean" x="1380" y="820" transform="rotate(30 1380 820)"/>
+  <use href="#bean" x="1430" y="860" transform="rotate(-20 1430 860)"/>
+
+  <!-- Portafilter with espresso, seen from above -->
+  <g filter="url(#shadow)">
+    <rect x="640" y="80" width="46" height="300" rx="20" fill="#151515"/>
+    <circle cx="663" cy="470" r="118" fill="#9a9a9a"/>
+    <circle cx="663" cy="470" r="104" fill="#5a5a5a"/>
+    <circle cx="663" cy="470" r="92" fill="url(#espresso)"/>
+  </g>
+
+  <!-- Latte cup with heart art -->
+  <g filter="url(#shadow)">
+    <circle cx="1240" cy="470" r="185" fill="#e9e1d6"/>
+    <circle cx="1240" cy="470" r="150" fill="#f7f2ea"/>
+    <circle cx="1240" cy="470" r="128" fill="url(#crema)"/>
+    <path d="M1240 545 C1170 495 1160 440 1200 420 C1222 410 1236 425 1240 440 C1244 425 1258 410 1280 420 C1320 440 1310 495 1240 545 Z" fill="#f3e6d3"/>
+    <path d="M1240 545 C1236 515 1238 470 1240 440" stroke="#b07f53" stroke-width="5" fill="none"/>
+    <rect x="1404" y="450" width="70" height="40" rx="20" fill="#e9e1d6"/>
+  </g>
+</svg>
